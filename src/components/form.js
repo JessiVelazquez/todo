@@ -3,22 +3,18 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import useHook from '../hooks/hooks.js';
 
 function ToDoForm(props) {
 
-  const [item, setItem] = useState({});
+  const [handleSubmit, handleInputChange] = useHook(props.addItem);
 
-  const handleInputChange = e => {
-    setItem({ ...item, [e.target.name]: e.target.value });
-  };
+  function todo(e) {
+    handleSubmit(e);
+    handleInputChange(e);
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    if (item.text && item.assignee) props.addItem(item);
-    const newItem = {};
-    setItem({ newItem });
-  };
+  // const [item, setItem] = useState({});
 
 
   return (
