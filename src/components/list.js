@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/button';
+
 
 
 function ToDoList(props) {
 
 
   return (
-    <ul>
+    <ListGroup id="listGroup">
       {props.list.map(item => (
-        <li
-          className={`complete-${item.complete.toString()}`}
-          key={item._id}
-        >
-          <span onClick={() => props.toggleComplete(item._id)}>
-            {item.text}
-          </span>
-        </li>
+        <div id="listItem">
+          <ListGroup.Item
+            id="listGroupItem"
+            className={`complete-${item.complete.toString()}`}
+            key={item._id}
+            onClick={() => props.toggleComplete(item._id)}
+          >Attn: {item.assignee} : {item.text}
+          </ListGroup.Item>
+          <Button id="deleteButton" variant="dark" type="submit" onClick={() => props.deleteItem(item._id)}>X</Button>
+        </div>
       ))}
-    </ul>
+    </ListGroup>
   );
 }
 
+<button id="deleteButton" type="submit" onClick={() => props.deleteItem(item._id)}>X</button>
 
 export default ToDoList;
