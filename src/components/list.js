@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/button';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -24,7 +24,5 @@ function ToDoList(props) {
     </ListGroup>
   );
 }
-
-<button id="deleteButton" type="submit" onClick={() => props.deleteItem(item._id)}>X</button>
 
 export default ToDoList;

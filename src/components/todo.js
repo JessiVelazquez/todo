@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ToDoForm from './form.js';
 import ToDoList from './list.js';
 import Navbar from 'react-bootstrap/Navbar';
-import Card from 'react-bootstrap/card';
+import Card from 'react-bootstrap/Card';
 
 import './todo.scss';
 
