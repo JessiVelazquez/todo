@@ -25,6 +25,4 @@ function ToDoList(props) {
   );
 }
 
-<button id="deleteButton" type="submit" onClick={() => props.deleteItem(item._id)}>X</button>
-
 export default ToDoList;
