@@ -22,12 +22,32 @@ body, html {
 
 }
 
+#formCard {
+  padding: 1em;
+}
+
+nav {
+  a {
+    margin-left: 20px;
+    color: white;
+  }
+}
+
+#navBlack {
+  background: gray;
+  margin: 30px 30px 30px 30px;
+  padding-left: 10px;
+  border-radius: 3px;
+  color: white;
+}
+
 .todo {
 
   display:flex;
   flex-direction:row;
   justify-content: flex-start;
   margin: 2em;
+
 
   form {
 
@@ -40,43 +60,64 @@ body, html {
           flex-direction:column;
           margin-bottom: 1em;
       }
+
+      #formGroupMargin {
+        margin-top: 30px;
+      }
   }
 
-  ul {
+  #listGroup {
       list-style-type:none;
-      margin:0;
+      margin-left: 40px;
       padding:0;
 
-      li {
+
+      #listGroupItem {
 
           align-items: center;
           display:flex;
           flex-direction:row;
           font-size: .75em;
-          margin: .75em .5em;
+          background: rgb(176, 213, 176);
+          float: left;
+          margin-right: 10px;
+          width: 325px;
 
-          &.complete-true {
-            span {
+          &.complete-false {
+            &:hover {
               background: pink;
-              text-decoration:line-through;
-              &:hover {
-                 background: seagreen;
-              }
             }
           }
 
-          span {
+          &.complete-true {
+            background: pink;
+            text-decoration:line-through;
+            &:hover {
+                background: rgb(48, 122, 80);
+            }
+          }
+          #deleteButton {
+            background-color: rgb(6, 71, 27);
+            color: white;
+            padding-left: 4px;
+            padding-right: 4px;
+            border-radius: 2px;
+            float: left;
+          }
+
+
+          #listGroupItem {
               background: #e0e0e0;
               cursor:pointer;
               &:hover {
                   background: pink;
               }
           }
-           span, input {
-               border: .5px solid #eee;
-               display:inline-block;
-               padding: .2em .25em;
-               width: 300px;
+          #listGroupItem, input, div {
+              border: .5px solid #eee;
+              display:inline-block;
+              padding: .2em .25em;
+              width: 300px;
            }
 
           button {

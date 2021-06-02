@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ToDoForm from './form.js';
 import ToDoList from './list.js';
+import Navbar from 'react-bootstrap/Navbar';
+import Card from 'react-bootstrap/card';
 
 import './todo.scss';
 
@@ -14,6 +16,14 @@ function ToDo() {
     item.complete = false;
     setList([...list, item]);
   };
+
+  const deleteItem = (id) => {
+    let item = list.filter(i => i._id === id)[0] || {};
+    if (item._id) {
+      let newList = list.filter(listItem => listItem._id !== id);
+      setList(newList);
+    }
+  }
 
   const toggleComplete = id => {
 
@@ -39,31 +49,29 @@ function ToDo() {
     setList(newList);
   }, []);
  
+  useEffect(() => {
+    if(list.length >= 1) (document.title = `${list.filter(item => !item.complete).length} Items To Complete`)
+  }, [list]);
 
   return (
     <>
-      <header>
-        <h2>
-        There are {list.filter(item => !item.complete).length} Items To Complete
-        </h2>
-      </header>
+      <Navbar bg="primary" variant="dark">
+        <Navbar.Brand id="homeBlue" href="#home">Home</Navbar.Brand>
+      </Navbar>
+      <Navbar bg="dark" variant="dark" id="navBlack">
+        <Navbar.Brand>To Do List Manager ({list.filter(item => !item.complete).length})</Navbar.Brand>
+      </Navbar>
 
-      <section className="todo">
-
-        <div>
-          <ToDoForm addItem={addItem} />
-        </div>
-
-        <div>
-          <ToDoList
-            list={list}
-            toggleComplete={toggleComplete}
-          />
-        </div>
-      </section>
+      <Card className="todo">
+        <ToDoForm addItem={addItem} />
+        <ToDoList
+          list={list}
+          toggleComplete={toggleComplete}
+          deleteItem={deleteItem}
+        />
+      </Card>
     </>
   );
 }
-
 
 export default ToDo;
