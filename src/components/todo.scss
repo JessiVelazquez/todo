@@ -19,11 +19,21 @@ body, html {
       flex:1;
       padding: 1em;
   }
-
 }
 
 #formCard {
   padding: 1em;
+}
+
+#cardBody {
+  #diff {
+    font-size: 10px;
+    float: right;
+  }
+  #taskText {
+    margin-bottom: 0;
+    cursor:pointer;
+  }
 }
 
 nav {
@@ -41,16 +51,58 @@ nav {
   color: white;
 }
 
-.todo {
 
+.badge-danger {
+  background :red;
+  display: inline-block;
+  padding: .35em .65em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.badge-success {
+  background:green;
+  display: inline-block;
+  padding: .35em .65em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+#listItem {
+  box-shadow: 5px 5px 10px rgb(198, 195, 195);
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.todo {
   display:flex;
   flex-direction:row;
   justify-content: flex-start;
   margin: 2em;
 
+  .mr-auto {
+    margin-right: 200px;
+    margin-left: 30px;
+  }
+
 
   form {
-
       display:flex;
       flex-direction:column;
       margin-right: 2em;
@@ -70,10 +122,7 @@ nav {
       list-style-type:none;
       margin-left: 40px;
       padding:0;
-
-      #ListItem {
-        margin-bottom: 30px;
-      }
+      width: 450px;
 
 
       #listGroupItem {

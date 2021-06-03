@@ -18,6 +18,7 @@ const ToDo = () => {
 
   const [list, setList] = useState([]);
   const [item, setItem] = useState({});
+  const [complete, setComplete] = useState('');
 
   const _addItem = (item) => {
     item.due = new Date();
@@ -69,25 +70,6 @@ const ToDo = () => {
     }
   }
 
-
-  // const deleteItem = (id) => {
-  //   let item = list.filter(i => i._id === id)[0] || {};
-  //   if (item._id) {
-  //     let newList = list.filter(listItem => listItem._id !== id);
-  //     setList(newList);
-  //   }
-  // }
-
-  // const updateItem = (id, val) => {
-  //   let item = list.filter(i => i._id === id)[0] || {};
-
-  //   if (item._id) {
-  //     item.text = val;
-  //     let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-  //     setList(newList);
-  //   }
-  // }
-
   const _toggleComplete = id => {
     let item = list.filter(i => i._id === id)[0] || {};
     if (item._id) {
@@ -97,7 +79,7 @@ const ToDo = () => {
         method: 'put',
         // mode: 'cors',
         // cache: 'no-cache',
-        // headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(item)
       })
         .then(response => response.json())
