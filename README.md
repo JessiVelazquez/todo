@@ -2,7 +2,9 @@
 
 Author: Jessi Velazquez
 
-Deployed Link: [https://jessi-todo-react.herokuapp.com/](https://jessi-todo-react.herokuapp.com/)
+Deployed Link (Front End): [https://jessi-todo-react.herokuapp.com/](https://jessi-todo-react.herokuapp.com/)
+
+Deployed Link (class API)
 
 PR: [https://github.com/JessiVelazquez/todo/pull/2](https://github.com/JessiVelazquez/todo/pull/2)
 
