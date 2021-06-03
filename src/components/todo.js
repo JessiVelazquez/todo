@@ -27,6 +27,16 @@ function ToDo() {
     }
   }
 
+  const updateItem = (id, val) => {
+    let item = list.filter(i => i._id === id)[0] || {};
+
+    if (item._id) {
+      item.text = val;
+      let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
+      setList(newList);
+    }
+  }
+
   const toggleComplete = id => {
 
     let item = list.filter(i => i._id === id)[0] || {};
@@ -70,6 +80,7 @@ function ToDo() {
           list={list}
           toggleComplete={toggleComplete}
           deleteItem={deleteItem}
+          updateItem={updateItem}
         />
       </Card>
     </>
