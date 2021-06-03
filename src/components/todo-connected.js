@@ -6,7 +6,9 @@ import ToDoList from './list.js';
 
 import './todo.scss';
 
-const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
+const todoAPI = 'https://jessi-api-server.herokuapp.com/todo'; // my API
+// const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo'; // class API
+
 
 
 const ToDo = () => {
