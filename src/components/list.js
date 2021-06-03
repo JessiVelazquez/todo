@@ -4,6 +4,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Toast from 'react-bootstrap/Toast';
+import Badge from 'react-bootstrap/Badge';
+import Card from 'react-bootstrap/Card';
 import useHook from '../hooks/hooks.js';
 import { FormControl } from 'react-bootstrap';
 
@@ -27,43 +29,52 @@ function ToDoList(props) {
     props.updateItem(id, value)
   }
 
-  // const toggleStatus = (complete) => {
-  //   console.log('BEFORE', complete);
-  //   setComplete(!complete);
-  //   console.log('AFTER', complete);
-  //   setId(id);
-  // }
-
   return (
     <>
       <div id="listGroup">
+        <When condition={update === true}>
+          <Form>
+            <FormControl placeholder="update task" onChange={(e) => setValue(e.target.value)} />
+            <Button onClick={(e) => {handleSubmit(e); toggleUpdate(id);}}>Submit</Button>
+          </Form>
+        </When>
         {props.list.map(item => (
-          <div id="listItem">
-            <Toast>
-              <Toast.Header>
-                {/* <button variant="primary" onClick={() => toggleStatus(item.complete)}>{item.complete.toString()}</button> */}
-                <strong className="mr-auto">{item.assignee}</strong>
-              </Toast.Header>
-              <Toast.Body>{item.text}</Toast.Body>
-              <Button id="deleteButton" variant="dark" type="submit" onClick={() => props.deleteItem(item._id)}>Delete</Button>
-              <Button variant="primary" onClick={() => toggleUpdate(item._id)}>Update</Button>
-            </Toast>
-            {/* <ListGroup.Item
-              id="listGroupItem"
+          <Card id="listItem">
+            <Card.Header>
+              <Badge
+                pill 
+                variant={item.complete === true ? 'danger' : 'success'}
+                className="m-3"
+                onClick={() => props.toggleComplete(item._id)}
+                >
+                {item.complete === true ? `Complete` : `Pending`}
+              </Badge>
+              <span className="mr-auto">{item.assignee}</span>
+              <Button 
+                variant="light" 
+                type="submit" 
+                onClick={() => props.deleteItem(item._id)}
+                className="float-right text-secondary font-weight-bold"
+                >
+                  X
+                </Button>
+            </Card.Header>
+            <Card.Body id="cardBody">
+              <Card.Text
+              id="taskText"
               className={`complete-${item.complete.toString()}`}
-              key={item._id}
-              onClick={() => props.toggleComplete(item._id)}
-            >Attn: {item.assignee} : {item.text}
-            </ListGroup.Item> */}
-          </div>
+              key={item.id}
+              onClick={() => toggleUpdate(item._id)}
+              >
+                {item.text}
+              </Card.Text>
+              <Card.Text id="diff" className="text-sm-right">
+                Difficulty: {item.difficulty}
+              </Card.Text>
+            </Card.Body>
+          </Card>
         ))}
       </div>
-      <When condition={update === true}>
-        <Form>
-          <FormControl placeholder="update a task" onChange={(e) => setValue(e.target.value)} />
-          <Button onClick={(e) => {handleSubmit(e); toggleUpdate(id);}}>Submit</Button>
-        </Form>
-      </When>
     </>
   );
 }
