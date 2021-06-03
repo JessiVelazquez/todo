@@ -6,21 +6,25 @@ import ToDoList from './list.js';
 
 import './todo.scss';
 
-const todoAPI = 'https://jessi-api-server.herokuapp.com/todo'; // my API
-// const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo'; // class API
+//====================My API========================\\
+const todoAPI = 'https://jessi-api-server.herokuapp.com/todo'; 
+
+//====================Class API======================||
+// const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 
 
 
 const ToDo = () => {
 
   const [list, setList] = useState([]);
+  const [item, setItem] = useState({});
 
   const _addItem = (item) => {
     item.due = new Date();
     fetch(todoAPI, {
       method: 'post',
-      mode: 'cors',
-      cache: 'no-cache',
+      // mode: 'no-cors',
+      // cache: 'no-cache',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item)
     })
@@ -34,8 +38,16 @@ const ToDo = () => {
   const deleteItem = (id) => {
     let item = list.filter(i => i._id === id)[0] || {};
     if (item._id) {
-      let newList = list.filter(listItem => listItem._id !== id);
-      setList(newList);
+      fetch(`${todoAPI}/${id}`, {
+        method: 'delete',
+        body: JSON.stringify(item)
+      })
+        .then(response => response.json())
+        .then(() => {
+          let newList = list.filter(listItem => listItem._id !== id);
+          setList(newList);
+        })
+        .catch(console.error);
     }
   }
 
@@ -43,27 +55,49 @@ const ToDo = () => {
     let item = list.filter(i => i._id === id)[0] || {};
 
     if (item._id) {
-      item.text = val;
-      let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-      setList(newList);
+      fetch(`${todoAPI}/${id}`, {
+        method: 'put',
+        body: JSON.stringify(val)
+      })
+        .then(response => response.json())
+        .then(() => {
+          item.text = val;
+          let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
+          setList(newList);
+        })
+        .catch(console.error);
     }
   }
 
+
+  // const deleteItem = (id) => {
+  //   let item = list.filter(i => i._id === id)[0] || {};
+  //   if (item._id) {
+  //     let newList = list.filter(listItem => listItem._id !== id);
+  //     setList(newList);
+  //   }
+  // }
+
+  // const updateItem = (id, val) => {
+  //   let item = list.filter(i => i._id === id)[0] || {};
+
+  //   if (item._id) {
+  //     item.text = val;
+  //     let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
+  //     setList(newList);
+  //   }
+  // }
+
   const _toggleComplete = id => {
-
     let item = list.filter(i => i._id === id)[0] || {};
-
     if (item._id) {
-
       item.complete = !item.complete;
-
       let url = `${todoAPI}/${id}`;
-
       fetch(url, {
         method: 'put',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
+        // mode: 'cors',
+        // cache: 'no-cache',
+        // headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(item)
       })
         .then(response => response.json())
@@ -77,10 +111,10 @@ const ToDo = () => {
   const _getTodoItems = () => {
     fetch(todoAPI, {
       method: 'get',
-      mode: 'cors',
+      // mode: 'cors',
     })
       .then(data => data.json())
-      .then(data => setList(data.results))
+      .then(data => setList(data))
       .catch(console.error);
   };
 
@@ -95,7 +129,7 @@ const ToDo = () => {
         <Navbar.Brand>To Do List Manager ({list.filter(item => !item.complete).length})</Navbar.Brand>
       </Navbar>
 
-      <Card className="todo">
+      <div className="todo">
         <ToDoForm addItem={_addItem} />
         <ToDoList
           list={list}
@@ -103,7 +137,7 @@ const ToDo = () => {
           deleteItem={deleteItem}
           updateItem={updateItem}
         />
-      </Card>
+      </div>
     </>
   );
 }
