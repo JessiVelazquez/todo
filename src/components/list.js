@@ -35,6 +35,27 @@ function ToDoList(props) {
 
   let currentList = props.list;
 
+  //============sorting==================\\
+  if (context.sortField === 'assignee') {
+    currentList.sort((a, b) => {
+      if (a.assignee > b.assignee) return 1;
+      if (a.assignee < b.assignee) return -1;
+      return 0;
+    });
+  }
+  else if (context.sortField === 'difficulty') {
+    currentList.sort((a, b) => {
+      return a.difficulty - b.difficulty;
+    });
+  }
+  else if (context.sortField === 'task') {
+    currentList.sort((a, b) => {
+      if (a.text > b.text) return 1;
+      if (a.text < b.text) return -1;
+      return 0;
+    });
+  }
+
   //=============hide completed============\\
   if (context.hideComplete) {
     currentList = props.list.filter(item => !item.complete);
@@ -52,12 +73,22 @@ function ToDoList(props) {
   return (
     <>
       <div id="listGroup">
-        <Button 
-          variant="success" 
-          onClick={() => context.setHideComplete(!context.hideComplete)}>
-            Hide Completed Tasks
-        </Button>
-        <Button>Filter By Difficulty</Button>
+        <div id="settings">
+          <Button
+            id="hideButton"
+            variant="success" 
+            onClick={() => context.setHideComplete(!context.hideComplete)}>
+              Hide Completed Tasks
+          </Button>
+          <div id="sortDropDown">
+            <label htmlFor="sortby">Sort By:</label>
+            <select name="sortby" onChange={e => context.setSortField(e.target.value)}>
+              <option value="assignee">Assignee</option>
+              <option value="difficulty">Difficulty</option>
+              <option value="task">Task</option>
+            </select>
+          </div>
+        </div>
         <When condition={update === true}>
           <Form>
             <FormControl placeholder="update task" onChange={(e) => setValue(e.target.value)} />
