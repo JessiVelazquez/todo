@@ -76,9 +76,9 @@ function ToDoList(props) {
         <div id="settings">
           <Button
             id="hideButton"
-            variant="success" 
+            variant={context.hideComplete === true ? 'danger' : 'success'}
             onClick={() => context.setHideComplete(!context.hideComplete)}>
-              Hide Completed Tasks
+              {context.hideComplete === true ? `Show Completed Tasks` : `Hide Completed Tasks`}
           </Button>
           <div id="sortDropDown">
             <label htmlFor="sortby">Sort By:</label>
