@@ -33,17 +33,31 @@ function ToDoList(props) {
     props.updateItem(id, value)
   }
 
-  // Get current Posts
+  let currentList = props.list;
+
+  //=============hide completed============\\
+  if (context.hideComplete) {
+    currentList = props.list.filter(item => !item.complete);
+  }
+
+  //==========Get current Posts===========\\
   const indexOfLastItem = currentPage * context.numItems;
   const indexOfFirstItem = indexOfLastItem - context.numItems;
-  const currentList = props.list.slice(indexOfFirstItem, indexOfLastItem); 
+  currentList = currentList.slice(indexOfFirstItem, indexOfLastItem); 
 
-  //change page
+  //============change page===============\\
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   return (
     <>
       <div id="listGroup">
+        <Button 
+          variant="success" 
+          onClick={() => context.setHideComplete(!context.hideComplete)}>
+            Hide Completed Tasks
+        </Button>
+        <Button>Filter By Difficulty</Button>
         <When condition={update === true}>
           <Form>
             <FormControl placeholder="update task" onChange={(e) => setValue(e.target.value)} />
