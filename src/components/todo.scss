@@ -82,6 +82,14 @@ nav {
   cursor: pointer;
 }
 
+#settings {
+  display: flex;
+  margin-bottom: 15px;
+  #hideButton {
+    margin-right: 50px;
+  }
+}
+
 #listItem {
   box-shadow: 5px 5px 10px rgb(198, 195, 195);
 }
