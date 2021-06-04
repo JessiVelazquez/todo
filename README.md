@@ -6,7 +6,13 @@ Deployed Link (Front End): [https://jessi-todo-react.herokuapp.com/](https://jes
 
 Deployed Link (api-server Back End): [https://jessi-api-server.herokuapp.com/todo](https://jessi-api-server.herokuapp.com/todo)
 
-PR: [https://github.com/JessiVelazquez/todo/pull/9](https://github.com/JessiVelazquez/todo/pull/9)
+PR: [https://github.com/JessiVelazquez/todo/pull/15](https://github.com/JessiVelazquez/todo/pull/15)
+
+## Overview and Description
+
+This is a React application with a Node.js back end that utilizes a Mongo database to persist data. The function of this application is to facilitate a multi-user to-do list tracking system. On the front end, users can add new to-do items, which are stored with a task, assignee, and difficulty rating. Tasks can be updated or deleted, or marked completed (but not deleted). There is viewing functionality built in to hide the tasks that are marked as complete, or sort the task list by assignee, task (alphabetical), or difficulty rating. There is also pagination added to the list viewing pane, as well as a drop down menu that allows the user to determine how many tasks per page will be displayed.
+
+## Build History
 
 **Build 1.0.0**
 
@@ -16,7 +22,21 @@ This is a React application that features a form input for a user to input to-do
 
 We have now added an update route and re-factored code to use custom React hooks. We have also connected our front end to the back end of api-server by adding custom routing for this to-do list front end to that server code.
 
+**Build 2.1.0**
+
+In this release, we have used React context to manage state globally, adding functionality for:
+
+1. hiding completed tasks
+
+2. sorting the task list by either assignee, task, or difficulty rating
+
+3. Pagination for list display
+
+4. Drop down for selecting how many tasks to display per page
+
+We have also cleaned up the styling to look just like the Remo help queue!
+
 ## UML
 
-![UML](./UML2.png)
+![UML](./UML3.png)
 
