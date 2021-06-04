@@ -90,6 +90,13 @@ nav {
   }
 }
 
+#settingsBottom {
+  display: flex;
+  #selectPerPage {
+    margin-left: 50px;
+  }
+}
+
 #listItem {
   box-shadow: 5px 5px 10px rgb(198, 195, 195);
 }
@@ -130,7 +137,7 @@ nav {
       list-style-type:none;
       margin-left: 40px;
       padding:0;
-      width: 450px;
+      width: 500px;
 
 
       #listGroupItem {
