@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { When } from 'react-if';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -8,16 +8,20 @@ import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import useHook from '../hooks/hooks.js';
 import { FormControl } from 'react-bootstrap';
+import { SettingsContext } from '../context/site.js';
+import Pagination from './pagination.js';
 
 
 
 function ToDoList(props) {
+  const context = useContext(SettingsContext);
 
   const [value, setValue] = useState('');
   const [id, setId] = useState('');
   const [update, setUpdate] = useState(false);
   const [handleSubmit, values] = useHook(updateList);
   const [complete, setComplete] = useState('');
+  const [currentPage, setCurrentPage] = useState('1');
 
   const toggleUpdate = (id) => {
     setUpdate(!update);
@@ -25,9 +29,17 @@ function ToDoList(props) {
   }
 
   function updateList(todo) {
-    setValue(todo);
+    setValue(todo); 
     props.updateItem(id, value)
   }
+
+  // Get current Posts
+  const indexOfLastItem = currentPage * context.numItems;
+  const indexOfFirstItem = indexOfLastItem - context.numItems;
+  const currentList = props.list.slice(indexOfFirstItem, indexOfLastItem); 
+
+  //change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -38,7 +50,7 @@ function ToDoList(props) {
             <Button onClick={(e) => {handleSubmit(e); toggleUpdate(id);}}>Submit</Button>
           </Form>
         </When>
-        {props.list.map(item => (
+        {currentList.map(item => (
           <Card id="listItem">
             <Card.Header>
               <Badge
@@ -74,6 +86,7 @@ function ToDoList(props) {
             </Card.Body>
           </Card>
         ))}
+        <Pagination itemsPerPage={context.numItems} totalItems={props.list.length} paginate={paginate}/>
       </div>
     </>
   );
