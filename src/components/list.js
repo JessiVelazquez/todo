@@ -131,7 +131,17 @@ function ToDoList(props) {
             </Card.Body>
           </Card>
         ))}
-        <Pagination itemsPerPage={context.numItems} totalItems={props.list.length} paginate={paginate}/>
+        <div id="settingsBottom">
+          <Pagination itemsPerPage={context.numItems} totalItems={props.list.length} paginate={paginate}/>
+          <div id="selectPerPage">
+            <label htmlFor="perPage">Items Displayed Per Page:</label>
+            <select name="perPage" onChange={e => context.setNumItems(e.target.value)}>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
       </div>
     </>
   );
