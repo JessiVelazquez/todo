@@ -76,13 +76,13 @@ function ToDoList(props) {
         <div id="settings">
           <Button
             id="hideButton"
-            variant={context.hideComplete === true ? 'danger' : 'success'}
+            variant={context.hideComplete === true ? 'success' : 'secondary'}
             onClick={() => context.setHideComplete(!context.hideComplete)}>
               {context.hideComplete === true ? `Show Completed Tasks` : `Hide Completed Tasks`}
           </Button>
           <div id="sortDropDown">
-            <label htmlFor="sortby">Sort By:</label>
-            <select name="sortby" onChange={e => context.setSortField(e.target.value)}>
+            <label id="sortLabel" htmlFor="sortby">Sort By:</label>
+            <select id="sortSelect" name="sortby" onChange={e => context.setSortField(e.target.value)}>
               <option value="assignee">Assignee</option>
               <option value="difficulty">Difficulty</option>
               <option value="task">Task</option>
@@ -133,8 +133,9 @@ function ToDoList(props) {
         ))}
         <div id="settingsBottom">
           <Pagination itemsPerPage={context.numItems} totalItems={props.list.length} paginate={paginate}/>
+          <p id="totalDisplay">{props.list.length} total items</p>
           <div id="selectPerPage">
-            <label htmlFor="perPage">Items Displayed Per Page:</label>
+            <label id="perPagelabel" htmlFor="perPage">Items Displayed Per Page:</label>
             <select name="perPage" onChange={e => context.setNumItems(e.target.value)}>
               <option value="3">3</option>
               <option value="4">4</option>

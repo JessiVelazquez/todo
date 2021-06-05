@@ -22,7 +22,7 @@ function ToDoForm(props) {
       <h3>Add To Do Item</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Group id="formGroupMargin">
-          <Form.Label>To Do Item</Form.Label>
+          <Form.Label>To Do Item:</Form.Label>
           <Form.Control
             name="text"
             placeholder="Add To Do List Item"
@@ -30,7 +30,7 @@ function ToDoForm(props) {
           />
         </Form.Group>
         <Form.Group id="formGroupMargin">
-          <Form.Label>Assigned To</Form.Label>
+          <Form.Label>Assigned To:</Form.Label>
           <Form.Control 
             type="text" 
             name="assignee" 
@@ -38,8 +38,8 @@ function ToDoForm(props) {
             onChange={handleInputChange} 
           />
         </Form.Group>
-        <Form.Group>
-          <Form.Label></Form.Label>
+        <Form.Group id="diffSlider">
+          <Form.Label>Set Difficulty:</Form.Label>
           <Form.Control 
             defaultValue="1" 
             type="range" 
