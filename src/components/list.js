@@ -136,10 +136,11 @@ function ToDoList(props) {
           <p id="totalDisplay">{props.list.length} total items</p>
           <div id="selectPerPage">
             <label id="perPagelabel" htmlFor="perPage">Items Displayed Per Page:</label>
-            <select name="perPage" onChange={e => context.setNumItems(e.target.value)}>
+            <select id="perPageSelect" name="perPage" onChange={e => context.setNumItems(e.target.value)}>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
+              <option value={props.list.length}>ALL</option>
             </select>
           </div>
         </div>
