@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Card from 'react-bootstrap/Card';
 import ToDoForm from './form.js';
 import ToDoList from './list.js';
+import Footer from './footer.js';
 
 import './todo.scss';
 
@@ -108,18 +109,19 @@ const ToDo = () => {
         <Navbar.Brand id="homeBlue" href="#home">Home</Navbar.Brand>
       </Navbar>
       <Navbar bg="dark" variant="dark" id="navBlack">
-        <Navbar.Brand>To Do List Manager ({list.filter(item => !item.complete).length})</Navbar.Brand>
+        <Navbar.Brand>To Do List Manager ({list.filter(item => !item.complete).length} Tasks Pending)</Navbar.Brand>
       </Navbar>
-
       <div className="todo">
         <ToDoForm addItem={_addItem} />
         <ToDoList
+          id="list"
           list={list}
           toggleComplete={_toggleComplete}
           deleteItem={deleteItem}
           updateItem={updateItem}
         />
       </div>
+      <Footer></Footer>
     </>
   );
 }

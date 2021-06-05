@@ -21,8 +21,17 @@ body, html {
   }
 }
 
+#footerText {
+  text-align: center;
+  padding: 1em;
+  background-color: rgb(233, 233, 233);
+}
+
 #formCard {
   padding: 1em;
+  #diffSlider {
+    margin-top: 30px;
+  }
 }
 
 #cardBody {
@@ -86,8 +95,17 @@ nav {
   display: flex;
   margin-bottom: 15px;
   #hideButton {
-    margin-right: 50px;
+    margin-right: 170px;
     box-shadow: 3px 3px 10px rgb(137, 158, 139);
+  }
+  #sortDropDown {
+    margin-top: 6px;
+  }
+  #sortLabel {
+    margin-right: 15px;
+  }
+  #sortSelect {
+    width: 120px;
   }
 }
 
@@ -95,6 +113,14 @@ nav {
   display: flex;
   #selectPerPage {
     margin-left: 50px;
+  }
+  #perPagelabel {
+    margin-right: 15px;
+    padding-top: 6px;
+  }
+  #totalDisplay {
+    margin-left: 15px;
+    padding-top: 6px;
   }
 }
 
@@ -113,7 +139,7 @@ nav {
   margin: 2em;
 
   .mr-auto {
-    margin-right: 200px;
+    margin-right: 300px;
     margin-left: 30px;
   }
 
@@ -138,7 +164,7 @@ nav {
       list-style-type:none;
       margin-left: 40px;
       padding:0;
-      width: 500px;
+      width: 600px;
 
 
       #listGroupItem {
