@@ -38,8 +38,8 @@ function ToDoList(props) {
   //============sorting==================\\
   if (context.sortField === 'assignee') {
     currentList.sort((a, b) => {
-      if (a.assignee > b.assignee) return 1;
-      if (a.assignee < b.assignee) return -1;
+      if (a.assignee.toLowerCase() > b.assignee.toLowerCase()) return 1;
+      if (a.assignee.toLowerCase() < b.assignee.toLowerCase()) return -1;
       return 0;
     });
   }
@@ -50,8 +50,8 @@ function ToDoList(props) {
   }
   else if (context.sortField === 'task') {
     currentList.sort((a, b) => {
-      if (a.text > b.text) return 1;
-      if (a.text < b.text) return -1;
+      if (a.text.toLowerCase() > b.text.toLowerCase()) return 1;
+      if (a.text.toLowerCase() < b.text.toLowerCase()) return -1;
       return 0;
     });
   }
