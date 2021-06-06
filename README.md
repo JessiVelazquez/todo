@@ -36,7 +36,17 @@ In this release, we have used React context to manage state globally, adding fun
 
 We have also cleaned up the styling to look just like the Remo help queue!
 
+**Build 2.1.1**
+
+In this build, we have moved our database to its own designated Mongo Atlas project cluster. We have also added styling elements, and have made the following bug fixes and feature updates:
+
+1. Case sensitive sorting has been fixed.
+
+2. Default setting to 1 in the server side schema.
+
+3. Added the ability to view all tasks on one page.
+
 ## UML
 
-![UML](./UML3.png)
+![UML](./UML4.png)
 
