@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import useHook from '../hooks/hooks.js';
 import './todo.scss';
 
-const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
+const todoAPI = 'https://api-server-jessi.herokuapp.com/todo';
 
 
 function ToDo() {

@@ -5,7 +5,7 @@ const useHook = (action) => {
   const [values, setValues] = useState({});
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     action(values);
   }
 

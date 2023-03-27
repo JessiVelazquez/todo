@@ -8,7 +8,7 @@ import Footer from './footer.js';
 import './todo.scss';
 
 //====================My API========================\\
-const todoAPI = 'https://jessi-api-server.herokuapp.com/todo'; 
+const todoAPI = 'https://api-server-jessi.herokuapp.com/todo'; 
 
 //====================Class API======================||
 // const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
