@@ -21,14 +21,14 @@
     "url": "https://github.com/JessiVelazquez/todo/issues"
   },
   "dependencies": {
-    "bootstrap": "^5.0.1",
-    "node-sass": "^6.0.0",
+    "bootstrap": "^5.1.0",
+    "node-sass": "^8.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
     "react-if": "^4.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^5.0.1"
   },
   "browserslist": {
     "production": [
